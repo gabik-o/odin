@@ -20,8 +20,6 @@ import BrandHeader    from '../framer/brand-header'
 import HeadingTitle   from '../framer/heading-title'
 import Button         from '../framer/button'
 import ProjectCard    from '../framer/project-card'
-import ServiceCard    from '../framer/service-card'
-import Testimonials   from '../framer/testimonials'
 import ImageSlideshow from '../framer/image-slideshow'
 import ImagesLeft     from '../framer/images-left'
 import ImagesRight    from '../framer/images-right'
@@ -31,45 +29,6 @@ import { works } from '../data/works'
 // Featured: first 4 works that have content
 const featured = works.filter((w) => w.content).slice(0, 4)
 
-// Services — props map directly to ServiceCard's prop names from Framer XML
-const services = [
-  {
-    name: 'Photography',
-    subName1: 'Commercial Photography',
-    subName2: 'Event Photography',
-    subName3: 'Portrait Photography',
-    subName4: 'Commercial Photography',
-    subName5: 'Architectural Photography',
-    subName6: '',
-  },
-  {
-    name: 'Videography',
-    subName1: 'Brand Films',
-    subName2: 'Event Videography',
-    subName3: 'Social Media Content',
-    subName4: 'Cinematic Productions',
-    subName5: 'Aerial Videography',
-    subName6: 'Time-Lapse & Slow Motion',
-  },
-  {
-    name: 'Visual Direction',
-    subName1: 'Art Direction',
-    subName2: 'Set & Prop Styling',
-    subName3: 'Wardrobe & Fashion Styling',
-    subName4: 'Makeup & Hair Styling',
-    subName5: 'Visual Strategy',
-    subName6: 'Storytelling',
-  },
-  {
-    name: 'Post-Production & Retouching',
-    subName1: 'Photo Editing & Retouching',
-    subName2: 'Video Editing',
-    subName3: 'Color Correction & Grading',
-    subName4: '3D & CGI Integration',
-    subName5: '',
-    subName6: '',
-  },
-]
 
 export default function Home() {
   const breakpoint = useBreakpoint()
@@ -89,7 +48,6 @@ export default function Home() {
   // Subtle upward drift on the text as you scroll
   const heroTextY = useTransform(scrollYProgress, [0, 1], ['0%', '-8%'])
   const heroImageX = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
- 
 
   return (
     <main style={{ backgroundColor: 'var(--color-black)' }}>
@@ -112,6 +70,8 @@ export default function Home() {
           /* 220vh = same ratio as Framer's 2200px at 1000px viewport */
           height: '220vh',
           backgroundColor: 'var(--zinc-200)',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         {/* Sticky container — stays pinned at top for the full 220vh scroll */}
@@ -121,15 +81,19 @@ export default function Home() {
             top: 0,
             width: '100%',
             height: '100vh',
+            zIndex: 2,
             overflow: 'hidden',
           }}
         >
           {/* ── Image layer (absolute, behind text) ── */}
           <div
+            className="hero-images"
             style={{
-              position: 'absolute',
-              inset: 0,
+              width: '100%',
+              height: '100vh',
               display: 'flex',
+              zIndex: 1,
+              overflow: 'hidden',
             }}
           >
             <ImagesLeft  style={{ flex: 1, height: '100%', minWidth: 0, transform: heroImageX }} />
@@ -248,7 +212,7 @@ export default function Home() {
                     title={work.title}
                     image={{ src: work.mainImage, alt: work.title }}
                     hoverImage={{ src: work.hoverImage, alt: work.title }}
-                    style={{ width: '100%', height: '100%' }}
+                    style={{ width: '100%' }}
                   />
                 </div>
               </Link>
@@ -285,50 +249,6 @@ export default function Home() {
               <Button title="About Us" link="/about" variant="Primary" icon="ArrowRight" />
             </div>
           </div>
-        </div>
-        <div className="divider" />
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          OUR SERVICES — ServiceCard stack
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--color-black)', position: 'relative' }}>
-        <div className="section-inner">
-          <div style={{ marginBottom: 60, textAlign: 'center' }}>
-            <HeadingTitle title="Our Services" color="rgb(228, 228, 231)" />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {services.map((s, i) => (
-              <ServiceCard
-                key={i}
-                variant={serviceVariant}
-                name1={s.name}
-                subName1={s.subName1}
-                subName2={s.subName2}
-                subName3={s.subName3}
-                subName4={s.subName4}
-                subName5={s.subName5}
-                subName6={s.subName6}
-                style={{ width: '100%' }}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="divider" />
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          TESTIMONIALS
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--color-black)', position: 'relative' }}>
-        <div className="section-inner" style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ marginBottom: 60, alignSelf: 'flex-start' }}>
-            <HeadingTitle title="What they said" color="rgb(228, 228, 231)" />
-          </div>
-          <Testimonials
-            variant="Desktop"
-            style={{ width: '100%', maxWidth: 800 }}
-          />
         </div>
         <div className="divider" />
       </section>
@@ -396,6 +316,9 @@ export default function Home() {
 
         /* ── Mobile breakpoint ── */
         @media (max-width: 768px) {
+        .hero-images {
+            flex-direction: column;
+          }
           .section-inner {
             padding: 60px 24px;
           }
