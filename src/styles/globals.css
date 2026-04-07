@@ -1,0 +1,206 @@
+/* ============================================================
+   ODIN — Pure Visuals
+   Global Styles & Design System
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Color Styles (mirrored from Framer project) */
+  --color-white:    rgb(255, 255, 255);
+  --color-black:    rgb(0, 0, 0);
+  --zinc-50:        rgb(250, 250, 250);
+  --zinc-100:       rgb(244, 244, 245);
+  --zinc-200:       rgb(228, 228, 231);
+  --zinc-300:       rgb(212, 212, 216);
+  --zinc-400:       rgb(161, 161, 170);
+  --zinc-500:       rgb(113, 113, 122);
+  --zinc-600:       rgb(82, 82, 91);
+  --zinc-700:       rgb(63, 63, 70);
+  --zinc-800:       rgb(39, 39, 42);
+  --zinc-900:       rgb(24, 24, 27);
+  --zinc-950:       rgb(9, 9, 11);
+
+  /* Typography */
+  --font-mono:      'JetBrains Mono', monospace;
+  --font-serif:     'Playfair Display', serif;
+  --font-sans:      'Poppins', sans-serif;
+
+  /* Spacing */
+  --section-padding: 100px;
+  --content-max-width: 1600px;
+  --container-max-width: 1200px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.8;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---------- Typography Scale (mirrored from Framer text styles) ---------- */
+
+/* /Brand Header — 180px JetBrains Mono Bold, uppercase */
+.text-brand-header {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(60px, 12.5vw, 180px);
+  line-height: 1.1em;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+/* /H1 — 96px JetBrains Mono SemiBold, uppercase */
+.text-h1 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(40px, 6.67vw, 96px);
+  line-height: 1.1em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* /H2 — 72px JetBrains Mono Bold, uppercase */
+.text-h2 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 72px);
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
+/* /H3 — 40px JetBrains Mono Bold, uppercase */
+.text-h3 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(24px, 2.78vw, 40px);
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* /H4 — 24px JetBrains Mono Medium, uppercase */
+.text-h4 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* /H5 — 18px Playfair Display Bold, uppercase */
+.text-h5 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.2em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* /H6 — 16px JetBrains Mono Regular, uppercase */
+.text-h6 {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* /H6 SM — 14px JetBrains Mono Regular */
+.text-h6-sm {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* /Body — 16px Poppins Regular */
+.text-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.8em;
+}
+
+/* /Body LG — 18px Poppins Regular */
+.text-body-lg {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.8em;
+}
+
+/* /Body SM — 14px Poppins Regular */
+.text-body-sm {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6em;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Layout Utilities ---------- */
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background-color: var(--zinc-800);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* ---------- Page Transition ---------- */
+.page-enter {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
