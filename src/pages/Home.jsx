@@ -6,7 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import BrandHeader    from '../framer/brand-header'
 import HeadingTitle   from '../framer/heading-title'
 import Button         from '../framer/button'
-import ProjectCard    from '../framer/project-card'
+import FeaturedWorkCard from '../components/FeaturedWorkCard'
 import ImageSlideshow from '../framer/image-slideshow'
 import ImagesLeft     from '../framer/images-left'
 import ImagesRight    from '../framer/images-right'
@@ -177,43 +177,41 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          FEATURED WORKS
-          2-column grid matching Framer's ProjectsCms grid.
-          Cards get an explicit aspect-ratio so the browser
-          knows their size before images load (fixes the long
-          lazy-load delay caused by zero-height containers).
+          FEATURED WORKS — native <img> cards (see FeaturedWorkCard.jsx)
       ══════════════════════════════════════════════════════ */}
-      <section style={sectionStyle}>
-        <div className="section-inner">
-          <div style={{ marginBottom: 60 }}>
+      <section className="featured-works-section" style={sectionStyle}>
+        <div className="section-inner featured-works-inner">
+          <div className="featured-works-heading">
             <HeadingTitle title="Featured Works" color="rgb(228, 228, 231)" />
           </div>
 
           <div className="works-grid">
-            {featured.map((work) => (
-              <Link
+            {featured.map((work, index) => (
+              <motion.div
                 key={work.slug}
-                to={`/projects/${work.slug}`}
-                style={{ display: 'block', textDecoration: 'none' }}
+                className="works-grid-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{
+                  duration: 0.55,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: index * 0.1,
+                }}
               >
-                {/*
-                  Explicit aspect-ratio wrapper: without a known height the
-                  browser treats the card as offscreen and delays image fetching.
-                  4/5 matches the Framer ProjectCard's native ratio.
-                */}
-                <div style={{ width: '100%', aspectRatio: '4 / 5' }}>
-                  <ProjectCard
+                <Link className="works-card-link" to={`/projects/${work.slug}`}>
+                  <FeaturedWorkCard
                     title={work.title}
-                    image={{ src: work.mainImage, alt: work.title }}
-                    hoverImage={{ src: work.hoverImage, alt: work.title }}
-                    style={{ width: '100%' }}
+                    mainImage={work.mainImage}
+                    hoverImage={work.hoverImage}
+                    fetchPriorityHigh={index < 2}
                   />
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 60 }}>
+          <div className="featured-works-cta">
             <Button title="More Works" link="/projects" variant="Primary" icon="ArrowRight" />
           </div>
         </div>
@@ -292,12 +290,85 @@ export default function Home() {
           padding: 100px;
         }
 
-        /* 2-column works grid — matches Framer's gridColumns="2" */
+        /* Featured Works: heading + grid share the same padded column */
+        .featured-works-inner {
+          width: 100%;
+          max-width: var(--container-max-width, 1200px);
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .featured-works-heading {
+          width: 100%;
+          margin-bottom: 60px;
+        }
+
+        .featured-works-cta {
+          display: flex;
+          justify-content: center;
+          margin-top: 60px;
+          width: 100%;
+        }
+
+        .works-card-link {
+          display: block;
+          width: 100%;
+          min-width: 0;
+          text-decoration: none;
+          color: inherit;
+        }
+
+        /* Native-image FeaturedWorkCard (no Framer lazy viewport) */
+        .featured-work-card {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .featured-work-card__media {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 4 / 5;
+          overflow: hidden;
+          border-radius: 4px;
+          background-color: var(--zinc-800);
+        }
+
+        .featured-work-card__img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .featured-work-card__img--hover {
+          opacity: 0;
+          transition: opacity 0.35s ease;
+        }
+
+        .works-card-link:hover .featured-work-card__img--hover {
+          opacity: 1;
+        }
+
+        .featured-work-card__title {
+          color: rgb(228, 228, 231);
+          margin-top: 20px;
+          padding: 0 4px;
+        }
+
+        /* 2-column works grid — matches Framer's ProjectsCms grid */
         .works-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          align-items: start;
           gap: 40px;
           margin-bottom: 0;
+          width: 100%;
+        }
+
+        .works-grid-item {
+          min-width: 0;
         }
 
         /* About section: side-by-side title + text */
@@ -324,6 +395,12 @@ export default function Home() {
           .section-inner {
             padding: 60px 24px;
           }
+          .featured-works-heading {
+            margin-bottom: 40px;
+          }
+          .featured-works-cta {
+            margin-top: 48px;
+          }
           .works-grid {
             grid-template-columns: 1fr;
             gap: 24px;
@@ -338,6 +415,9 @@ export default function Home() {
         @media (min-width: 769px) and (max-width: 1024px) {
           .section-inner {
             padding: 80px 48px;
+          }
+          .works-grid {
+            gap: 32px;
           }
         }
       `}</style>
