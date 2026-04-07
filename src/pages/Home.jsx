@@ -1,19 +1,6 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-
-// Responsive variant for Framer components (matches App.jsx logic)
-function useBreakpoint() {
-  const [width, setWidth] = useState(window.innerWidth)
-  useEffect(() => {
-    const handler = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handler)
-    return () => window.removeEventListener('resize', handler)
-  }, [])
-  if (width < 768) return 'Phone'
-  if (width < 1024) return 'Tablet'
-  return 'Desktop'
-}
 
 // ── Real Framer components ──
 import BrandHeader    from '../framer/brand-header'
@@ -28,53 +15,48 @@ import { works } from '../data/works'
 
 // Featured: first 4 works that have content
 const featured = works.filter((w) => w.content).slice(0, 4)
+const slideshowItems = works.slice(0, 6)
 
 
 export default function Home() {
-  const breakpoint = useBreakpoint()
-  // ServiceCard variant: 'Desktop-Off' | 'Tablet-Off' | 'Phone-Off'
-  const serviceVariant = `${breakpoint}-Off`
-  // Testimonials variant: 'Desktop' | 'Phone'
-  const testimonialsVariant = breakpoint === 'Phone' ? 'Phone' : 'Desktop'
-
   // Track scroll progress through the hero section
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  // Text fades out in the second half of the hero scroll
-  const heroTextOpacity = useTransform(scrollYProgress, [0, 0.5, 0.85], [1, 1, 0])
-  // Subtle upward drift on the text as you scroll
-  const heroTextY = useTransform(scrollYProgress, [0, 1], ['0%', '-8%'])
-  const heroImageX = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
+  // Fades in in sync with the rise; hits 1 when the block is centered (50% scroll). Wider ramp than [0,0,1] so letters aren’t stuck at opacity 0.
+  const heroTextOpacity = useTransform(scrollYProgress, [0, 0.1, 1], [0, 1, 1])
+  // Centered in the sticky 100vh when y = 0 — reaches that at 50% of hero scroll, then holds
+  const heroTextY = useTransform(scrollYProgress, [0, 0.5, 1], ['100vh', '0vh', '0vh'])
+  // Panels clear before the headline fades in / finishes rising
+  const heroLeftX = useTransform(scrollYProgress, [0, 0.36, 1], ['0%', '-100%', '-100%'])
+  const heroRightX = useTransform(scrollYProgress, [0, 0.36, 1], ['0%', '100%', '100%'])
+  // body uses white text; this block sits on zinc-200 — force dark foreground so Framer + spans aren’t stuck with inherited white
+  const heroForeground = 'var(--zinc-950)'
+  const heroSubtitleStyle = { color: heroForeground }
+  const sectionStyle = { backgroundColor: 'var(--color-black)', position: 'relative' }
 
   return (
     <main style={{ backgroundColor: 'var(--color-black)' }}>
 
       {/* ══════════════════════════════════════════════════════
-          HERO — 220vh tall so the sticky viewport lingers
-          while the user scrolls, matching the Framer original.
-          Structure mirrors the Framer XML:
-            HeroSection (220vh)
-              └── PreScroll (sticky 100vh)
-                    ├── ImagesLeft + ImagesRight (absolute, full bg)
-                    ├── Text overlay (transparent bg, z-index 1)
-                    └── Scroll indicator (absolute bottom)
+          HERO — 240vh gives enough scroll distance so images can exit, then the headline
+          can travel from +100vh → 0 (visually centered on the zinc background) while opacity
+          ramps 0 → 1 only in the last part of that motion (not while it’s still low on screen).
       ══════════════════════════════════════════════════════ */}
       <section
         ref={heroRef}
         style={{
           position: 'relative',
           width: '100%',
-          /* 220vh = same ratio as Framer's 2200px at 1000px viewport */
-          height: '220vh',
+          height: '240vh',
           backgroundColor: 'var(--zinc-200)',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-        {/* Sticky container — stays pinned at top for the full 220vh scroll */}
+        {/* Sticky container — pinned for the full hero scroll */}
         <div
           style={{
             position: 'sticky',
@@ -85,10 +67,11 @@ export default function Home() {
             overflow: 'hidden',
           }}
         >
-          {/* ── Image layer (absolute, behind text) ── */}
-          <div
+          {/* ── Image layer — Framer internals use their own z-index; keep this below the headline (see text z-index). */}
+          <motion.div
             className="hero-images"
             style={{
+              position: 'relative',
               width: '100%',
               height: '100vh',
               display: 'flex',
@@ -96,30 +79,41 @@ export default function Home() {
               overflow: 'hidden',
             }}
           >
-            <ImagesLeft  style={{ flex: 1, height: '100%', minWidth: 0, transform: heroImageX }} />
-            <ImagesRight style={{ flex: 1, height: '100%', minWidth: 0 }} />
-          </div>
+            <motion.div style={{ flex: 1, height: '100%', minWidth: 0, x: heroLeftX }}>
+              <ImagesLeft style={{ width: '100%', height: '100%' }} />
+            </motion.div>
+            <motion.div style={{ flex: 1, height: '100%', minWidth: 0, x: heroRightX }}>
+              <ImagesRight style={{ width: '100%', height: '100%' }} />
+            </motion.div>
+          </motion.div>
 
-          {/* ── Text overlay (transparent bg so images show through) ── */}
+          {/* ── Text overlay — must sit above Framer image layers (they create nested stacking contexts). */}
           <motion.div
+            className="hero-text-block"
             style={{
               position: 'absolute',
               inset: 0,
-              zIndex: 1,
+              zIndex: 5,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               padding: '0 20px',
               textAlign: 'center',
-              // NO backgroundColor — images must show through
+              color: heroForeground,
               opacity: heroTextOpacity,
               y: heroTextY,
             }}
           >
             <BrandHeader
               brandName="Odinakachi Odibo"
-              style={{ width: '100%', maxWidth: 1200 }}
+              style={{
+                width: '100%',
+                maxWidth: 1200,
+                color: heroForeground,
+                // Framer RichText / presets read this token; avoids white-on-zinc from body inheritance
+                ['--framer-text-color']: heroForeground,
+              }}
             />
             <div
               style={{
@@ -130,10 +124,10 @@ export default function Home() {
                 justifyContent: 'center',
               }}
             >
-              <span className="text-h5" style={{ color: 'var(--color-black)' }}>
+              <span className="text-h5" style={heroSubtitleStyle}>
                 Model Portfolio
               </span>
-              <span className="text-h5" style={{ color: 'var(--color-black)' }}>
+              <span className="text-h5" style={heroSubtitleStyle}>
                 Born from a love of beauty — built for the brand
               </span>
             </div>
@@ -149,7 +143,7 @@ export default function Home() {
               bottom: 80,
               left: '50%',
               transform: 'translateX(-50%)',
-              zIndex: 2,
+              zIndex: 6,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -189,7 +183,7 @@ export default function Home() {
           knows their size before images load (fixes the long
           lazy-load delay caused by zero-height containers).
       ══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--color-black)', position: 'relative' }}>
+      <section style={sectionStyle}>
         <div className="section-inner">
           <div style={{ marginBottom: 60 }}>
             <HeadingTitle title="Featured Works" color="rgb(228, 228, 231)" />
@@ -230,7 +224,7 @@ export default function Home() {
           WHO WE ARE — sticky title + body text, matching
           the Framer AboutSection layout
       ══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--color-black)', position: 'relative' }}>
+      <section style={sectionStyle}>
         <div className="section-inner">
           <div className="about-row">
             <div style={{ flex: '0 0 auto' }}>
@@ -270,21 +264,29 @@ export default function Home() {
         </div>
 
         {/* Full-width slideshow strip — no section-inner padding so it bleeds edge to edge */}
-        <div style={{ width: '100%', overflow: 'hidden', paddingBottom: 0 }}>
-          <ImageSlideshow
-            image1={{ src: works[0].mainImage, alt: works[0].title }}
-            image2={{ src: works[1].mainImage, alt: works[1].title }}
-            image3={{ src: works[2].mainImage, alt: works[2].title }}
-            image4={{ src: works[3].mainImage, alt: works[3].title }}
-            image5={{ src: works[4].mainImage, alt: works[4].title }}
-            image6={{ src: works[5].mainImage, alt: works[5].title }}
-            style={{ width: '100%', height: 220 }}
-          />
-        </div>
+        {slideshowItems.length >= 6 && (
+          <div style={{ width: '100%', overflow: 'hidden', paddingBottom: 0 }}>
+            <ImageSlideshow
+              image1={{ src: slideshowItems[0].mainImage, alt: slideshowItems[0].title }}
+              image2={{ src: slideshowItems[1].mainImage, alt: slideshowItems[1].title }}
+              image3={{ src: slideshowItems[2].mainImage, alt: slideshowItems[2].title }}
+              image4={{ src: slideshowItems[3].mainImage, alt: slideshowItems[3].title }}
+              image5={{ src: slideshowItems[4].mainImage, alt: slideshowItems[4].title }}
+              image6={{ src: slideshowItems[5].mainImage, alt: slideshowItems[5].title }}
+              style={{ width: '100%', height: 220 }}
+            />
+          </div>
+        )}
       </section>
 
       {/* ── Shared layout styles ── */}
       <style>{`
+        /* Light hero: body is still default white text — force dark type for Framer headline */
+        .hero-text-block h1,
+        .hero-text-block .framer-styles-preset-jehuhb {
+          color: var(--zinc-950) !important;
+        }
+
         /* Section inner padding — 100px desktop, 24px mobile */
         .section-inner {
           padding: 100px;
