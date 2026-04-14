@@ -182,7 +182,7 @@ export default function Home() {
       <section className="featured-works-section" style={sectionStyle}>
         <div className="section-inner featured-works-inner">
           <div className="featured-works-heading">
-            <HeadingTitle title="Featured Works" color="rgb(228, 228, 231)" />
+            <HeadingTitle title="Portfolio" color="rgb(228, 228, 231)"  />
           </div>
 
           <div className="works-grid">
@@ -212,7 +212,13 @@ export default function Home() {
           </div>
 
           <div className="featured-works-cta">
-            <Button title="More Works" link="/projects" variant="Primary" icon="ArrowRight" />
+            <Button
+              className="featured-works-see-more-btn"
+              title="See More"
+              link="/projects"
+              variant="Primary"
+              icon="ArrowRight"
+            />
           </div>
         </div>
         <div className="divider" />
@@ -299,8 +305,17 @@ export default function Home() {
         }
 
         .featured-works-heading {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           width: 100%;
-          margin-bottom: 60px;
+          margin-bottom: 28px;
+          text-align: center;
+        }
+
+        .featured-works-kicker {
+          color: var(--zinc-400);
+          margin-bottom: 10px;
         }
 
         .featured-works-cta {
@@ -308,6 +323,47 @@ export default function Home() {
           justify-content: center;
           margin-top: 60px;
           width: 100%;
+          position: relative;
+          z-index: 2;
+        }
+
+        /*
+          Framer Primary defaults to black label + icon on a clear “pill” — invisible on black.
+          Force a light outline button; hover inverts to light fill + dark text.
+        */
+        .featured-works-cta .featured-works-see-more-btn {
+          opacity: 1 !important;
+          transform: translate3d(0, 0, 0) !important;
+          color: rgb(228, 228, 231) !important;
+          background-color: transparent !important;
+          border: 1px solid rgb(228, 228, 231) !important;
+          border-radius: 22px !important;
+        }
+
+        .featured-works-cta .featured-works-see-more-btn p,
+        .featured-works-cta .featured-works-see-more-btn .framer-styles-preset-1lbraru {
+          --framer-text-color: rgb(228, 228, 231) !important;
+          color: rgb(228, 228, 231) !important;
+        }
+
+        .featured-works-cta .featured-works-see-more-btn svg {
+          color: rgb(228, 228, 231) !important;
+        }
+
+        .featured-works-cta .featured-works-see-more-btn:hover {
+          background-color: rgb(228, 228, 231) !important;
+          color: var(--zinc-950) !important;
+          border-color: rgb(228, 228, 231) !important;
+        }
+
+        .featured-works-cta .featured-works-see-more-btn:hover p,
+        .featured-works-cta .featured-works-see-more-btn:hover .framer-styles-preset-1lbraru {
+          --framer-text-color: var(--zinc-950) !important;
+          color: var(--zinc-950) !important;
+        }
+
+        .featured-works-cta .featured-works-see-more-btn:hover svg {
+          color: var(--zinc-950) !important;
         }
 
         .works-card-link {
@@ -396,7 +452,7 @@ export default function Home() {
             padding: 60px 24px;
           }
           .featured-works-heading {
-            margin-bottom: 40px;
+            margin-bottom: 24px;
           }
           .featured-works-cta {
             margin-top: 48px;

@@ -275,7 +275,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 							}}
 							__framer__animateOnce={true}
 							__framer__enter={animation}
-							__framer__styleAppearEffectEnabled={true}
+							__framer__styleAppearEffectEnabled={false}
 							__framer__threshold={0.5}
 							__fromCanvasComponent={true}
 							__perspectiveFX={false}
