@@ -14,7 +14,7 @@ import ImagesRight    from '../framer/images-right'
 import { works } from '../data/works'
 
 // Featured: first 4 works that have content
-const featured = works.filter((w) => w.content).slice(0, 4)
+const featured = works.slice(0, 4)
 const slideshowItems = works.slice(0, 6)
 
 
@@ -217,7 +217,6 @@ export default function Home() {
               title="See More"
               link="/projects"
               variant="Primary"
-              icon="ArrowRight"
             />
           </div>
         </div>
@@ -232,43 +231,28 @@ export default function Home() {
         <div className="section-inner">
           <div className="about-row">
             <div style={{ flex: '0 0 auto' }}>
-              <HeadingTitle title="Who We Are" color="rgb(255, 255, 255)" />
+              <HeadingTitle title="About Me" color="rgb(255, 255, 255)" />
             </div>
             <div style={{ flex: '1 1 360px', maxWidth: 420 }}>
               <p
                 className="text-body"
-                style={{ color: 'var(--zinc-400)', marginBottom: 40, lineHeight: 1.8 }}
+                style={{ color: 'var(--zinc-400)', marginBottom: 5, lineHeight: 1.8 }}
               >
-                At Pure Visuals, we are a team of passionate creatives dedicated to
-                crafting striking visual narratives. Specializing in photography,
-                videography, and creative direction, we bring brands, stories, and
-                concepts to life with a refined artistic touch.
+                My name is Odinakachi Odibo. I am a Chicago-based commercial, editorial, and print model.
+                <p>I have always had love for beauty and taking pictures, which poured into my desire for modeling,
+                as well as advice from friends and strangers.</p>
+                My goal as a model is to work in diverse roles which allow me portray products, experiences 
+                and represent brands through my unique personality and features. I am looking to grow and learn more 
+                with every experience, show up professionally and work diligently.
               </p>
-              <Button title="About Us" link="/about" variant="Primary" icon="ArrowRight" />
+              <div className="measurements-btn-wrap" style={{ marginBottom: 10, display: 'flex', justifyContent: 'end', width: "100%", zIndex: "2"}}>
+                <Button title="Click to see measurements" link="/about" variant="Secondary" />
+              </div>
+          </div>
+          <div className="featured-works-cta" style={{ marginBottom: 10 }}>
+              <Button className="featured-works-see-more-btn" title="Let's Talk" link="/contact" variant="Primary" />
             </div>
-          </div>
-        </div>
-        <div className="divider" />
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          CTA + IMAGE SLIDESHOW
-      ══════════════════════════════════════════════════════ */}
-      <section style={{ backgroundColor: 'var(--color-black)' }}>
-        <div className="section-inner" style={{ textAlign: 'center' }}>
-          <div style={{ marginBottom: 40 }}>
-            <HeadingTitle title="Turning imagination" color="rgb(228, 228, 231)" />
-            <div style={{ marginTop: 8 }}>
-              <HeadingTitle title="into reality" color="rgb(228, 228, 231)" />
-            </div>
-          </div>
-          <div style={{ marginBottom: 60 }}>
-            <Button title="Let's Talk" link="/contact" variant="Primary" icon="ArrowRight" />
-          </div>
-        </div>
-
-        {/* Full-width slideshow strip — no section-inner padding so it bleeds edge to edge */}
-        {slideshowItems.length >= 6 && (
+            {slideshowItems.length >= 6 && (
           <div style={{ width: '100%', overflow: 'hidden', paddingBottom: 0 }}>
             <ImageSlideshow
               image1={{ src: slideshowItems[0].mainImage, alt: slideshowItems[0].title }}
@@ -280,8 +264,17 @@ export default function Home() {
               style={{ width: '100%', height: 220 }}
             />
           </div>
-        )}
+        )}     
+          </div>
+        </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════
+          CTA + IMAGE SLIDESHOW
+      ══════════════════════════════════════════════════════ */}
+        {/* Full-width slideshow strip — no section-inner padding so it bleeds edge to edge */}
+        
+ 
 
       {/* ── Shared layout styles ── */}
       <style>{`
@@ -321,7 +314,7 @@ export default function Home() {
         .featured-works-cta {
           display: flex;
           justify-content: center;
-          margin-top: 60px;
+          margin-top: 10px;
           width: 100%;
           position: relative;
           z-index: 2;
@@ -338,6 +331,11 @@ export default function Home() {
           background-color: transparent !important;
           border: 1px solid rgb(228, 228, 231) !important;
           border-radius: 22px !important;
+          padding: 0px 24px !important;
+        }
+
+        .featured-works-cta .featured-works-see-more-btn .framer-1nhvh8k {
+          display: none !important;
         }
 
         .featured-works-cta .featured-works-see-more-btn p,
@@ -351,6 +349,7 @@ export default function Home() {
         }
 
         .featured-works-cta .featured-works-see-more-btn:hover {
+          padding: 0px 24px !important;
           background-color: rgb(228, 228, 231) !important;
           color: var(--zinc-950) !important;
           border-color: rgb(228, 228, 231) !important;
@@ -465,6 +464,16 @@ export default function Home() {
             flex-direction: column;
             gap: 32px;
           }
+        }
+
+        /* Measurements button: balanced padding, no icon, always visible */
+        .measurements-btn-wrap .framer-z2sxfz,
+        .measurements-btn-wrap .framer-z2sxfz.hover {
+          padding: 0px 24px !important;
+          opacity: 1 !important;
+        }
+        .measurements-btn-wrap .framer-1nhvh8k {
+          display: none !important;
         }
 
         /* ── Tablet breakpoint ── */
