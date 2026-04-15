@@ -218,9 +218,9 @@ var getProps = ({
 		GzslWh8uY: link2 ?? props.GzslWh8uY,
 		LQFOVAylR: location ?? props.LQFOVAylR ?? "Location",
 		MJC5GCSTy: copyright ?? props.MJC5GCSTy ?? "odeenaka@gmail.com",
-		PBdTDgPvq: address ?? props.PBdTDgPvq ?? "Address",
+		PBdTDgPvq: address ?? props.PBdTDgPvq ?? "",
 		Q8xWqbXBE: socialName3 ?? props.Q8xWqbXBE ?? "Social Name 3",
-		RaJd9_DyL: socialName1 ?? props.RaJd9_DyL ?? "Social Name 1",
+		RaJd9_DyL: socialName1 ?? props.RaJd9_DyL ?? "@odeenakaaa",
 		t3e6PPas3: link3 ?? props.t3e6PPas3,
 		TeRVy7u1n: titleName2 ?? props.TeRVy7u1n ?? "Title Name 2",
 		uf89OexKy: titleName3 ?? props.uf89OexKy ?? "Title Name 3",
@@ -919,7 +919,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																data-styles-preset={"eKbH3HTQS"}
 																dir={"auto"}
 															>
-																{"CONTACT"}
+																{"INSTAGRAM"}
 															</motion.h6>
 														</React.Fragment>
 													),
@@ -934,7 +934,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												className={"framer-styles-preset-vif74l"}
 												data-styles-preset={"eKbH3HTQS"}
 											>
-												{"Socials"}
+												{"Instagram"}
 											</motion.h6>
 										</React.Fragment>
 									</RichText>
@@ -994,7 +994,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 																			className={"framer-styles-preset-cnadud"}
 																			data-styles-preset={"KfHwEVY0D"}
 																		>
-																			{"Social Name 1"}
+																			{"@odeenakaaa"}
 																		</motion.a>
 																	</Link>
 																</motion.p>
@@ -1025,7 +1025,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 															className={"framer-styles-preset-cnadud"}
 															data-styles-preset={"KfHwEVY0D"}
 														>
-															{"Social Name 1"}
+															{"@odeenakaaa"}
 														</motion.a>
 													</Link>
 												</motion.p>

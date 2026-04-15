@@ -98,8 +98,48 @@ export default function App() {
         copyright={`© ${new Date().getFullYear()} Odinakachi Odibo`}
         location="Chicago, IL"
         country="USA"
+        socialLink1="https://www.instagram.com/odeenakaaa"
         style={{ width: '100%' }}
       />
+      {/* Copyright — centered below About & Location on all screen sizes */}
+      <div style={{
+        backgroundColor: 'rgb(0, 0, 0)',
+        width: '100%',
+        paddingBottom: '32px',
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+        <p style={{
+          color: 'rgb(148, 163, 184)',
+          fontFamily: '"Inter", sans-serif',
+          fontSize: '14px',
+          letterSpacing: '-0.02em',
+          lineHeight: '1.6em',
+          margin: 0,
+        }}>
+          {`© ${new Date().getFullYear()} Odinakachi Odibo`}
+        </p>
+      </div>
+      <style>{`
+        /* Phone footer: hide Social Name 2 & 3 */
+        .framer-TZlZW.framer-v-15pnoiw .framer-1maq6ki,
+        .framer-TZlZW.framer-v-15pnoiw .framer-i7s96p {
+          display: none !important;
+        }
+        /* Phone footer: reduce top padding to close gap with slideshow above */
+        .framer-TZlZW.framer-v-15pnoiw.framer-16pj96t {
+          padding-top: 24px !important;
+        }
+        /* Hide copyright in its original positions (desktop column + phone socials section) */
+        .framer-TZlZW .framer-1dwpmpu,
+        .framer-TZlZW .framer-mfa9km {
+          display: none !important;
+        }
+        /* Remove bottom padding from footer since copyright now lives outside it */
+        .framer-TZlZW.framer-16pj96t {
+          padding-bottom: 0px !important;
+        }
+      `}</style>
     </>
   )
 }
