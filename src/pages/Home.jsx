@@ -80,10 +80,10 @@ export default function Home() {
             }}
           >
             <motion.div style={{ flex: 1, height: '100%', minWidth: 0, x: heroLeftX }}>
-              <ImagesLeft style={{ width: '100%', height: '100%' }} />
+              <ImagesLeft style={{ width: '100%', height: '100%' }} image1={'https://framerusercontent.com/images/RyoRg0gTkPAmxpIKjueDH9TkA.jpg'} image2={"https://framerusercontent.com/images/0XG3KPcBSxdxR6EVf1CwjuzQw.jpg"} image3={"https://framerusercontent.com/images/d2zw9Gr1cUcqTuoL5I4xTGrao4E.webp"} />
             </motion.div>
             <motion.div style={{ flex: 1, height: '100%', minWidth: 0, x: heroRightX }}>
-              <ImagesRight style={{ width: '100%', height: '100%' }} />
+              <ImagesRight style={{ width: '100%', height: '100%' }}  image1={"https://framerusercontent.com/images/e8VS3yreNM1VrkGqzofdKqxh1Q.webp"} image2={"https://framerusercontent.com/images/igKmidai8TpsnTlfHFaLnLrhhlE.jpg"} image3={"https://framerusercontent.com/images/HG1e6Lj2aHUNDgPxZjBhwgtSTs.jpg"} />
             </motion.div>
           </motion.div>
 
