@@ -68,7 +68,7 @@ export default function App() {
           link2="/about"
           title3="Contact"
           link3="/contact"
-          logo="Odin"
+          logo="Odinakachi Odibo"
           style={{ width: '100%' }}
         />
       </div>
