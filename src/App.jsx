@@ -56,12 +56,25 @@ export default function App() {
     else if (href) window.location.href = href
   }
 
+  const isHome = location.pathname === '/'
+  const navVariant = isHome
+    ? breakpoint
+    : breakpoint === 'Phone' ? 'Phone White'
+    : breakpoint === 'Tablet' ? 'Tablet White'
+    : 'Desktop White'
+
   return (
     <>
       {/* ── Real Framer Navigation ── */}
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, width: '100%' }}>
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, width: '100%',
+        // On non-home pages force nav text + icon to white by overriding the black color token
+        ...(!isHome && {
+          '--token-cc3662e6-3397-466e-9cb2-289050ebc7cb': 'rgb(255, 255, 255)',
+        }),
+      }}>
         <Navigation
-          variant={breakpoint}
+          variant={navVariant}
           title="Works"
           link="/projects"
           title2="About"
