@@ -56,12 +56,19 @@ export default function App() {
     else if (href) window.location.href = href
   }
 
+  const isHome = location.pathname === '/'
+  const navVariant = isHome
+    ? breakpoint
+    : breakpoint === 'Phone' ? 'Phone White'
+    : breakpoint === 'Tablet' ? 'Tablet White'
+    : 'Desktop White'
+
   return (
     <>
       {/* ── Real Framer Navigation ── */}
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, width: '100%' }}>
         <Navigation
-          variant={breakpoint}
+          variant={navVariant}
           title="Works"
           link="/projects"
           title2="About"
