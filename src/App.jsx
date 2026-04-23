@@ -1,6 +1,12 @@
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 import Navigation from './framer/navigation'
 import Footer from './framer/footer'
 import Home from './pages/Home'
@@ -65,6 +71,7 @@ export default function App() {
 
   return (
     <>
+      <ScrollToTop />
       {/* ── Real Framer Navigation ── */}
       <div style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, width: '100%',
