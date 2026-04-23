@@ -62,10 +62,12 @@ export default function ProjectDetail() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           {[
-            { label: 'Category', value: work.category },
-            { label: 'Industry',  value: work.industry },
-            { label: 'Year',      value: work.year },
-            { label: 'Client',    value: work.client },
+            { label: 'Studio', value: work.studio },
+            { label: 'Photographer',  value: work.photographer },
+            { label: 'Creative Director',      value: work.creativeDirector },
+            { label: 'Stylist',    value: work.stylist },
+            {label: 'MUA', value: work.mua},
+            {label: "Other Model", value: work.otherModel}
           ]
             .filter((m) => m.value)
             .map((meta) => (
@@ -82,7 +84,7 @@ export default function ProjectDetail() {
       </div>
 
       {/* Content */}
-      {work.content && (
+      {/* {work.content && (
         <div style={{ padding: '80px 100px', maxWidth: 760 }} className="detail-pad">
           <motion.div
             className="text-body-lg"
@@ -94,12 +96,13 @@ export default function ProjectDetail() {
             dangerouslySetInnerHTML={{ __html: work.content }}
           />
         </div>
-      )}
+      )} */}
 
       {/* Gallery */}
       {work.images.length > 0 && (
         <div
           style={{
+            marginTop: '40px',
             padding: '0 100px 100px',
             display: 'grid',
             gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',

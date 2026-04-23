@@ -13,6 +13,12 @@ export const works = [
     industry: "",
     year: "",
     client: "",
+    photographer: "",
+    mua: "",
+    stylist: "",
+    otherModel: "",
+    creativeDirector: "",
+    studio: "",
     content: "",
     mainImage:
       "https://framerusercontent.com/images/DzPcyGDp2ro3B2GpKrANPujwD0.jpg",
@@ -38,6 +44,12 @@ export const works = [
     industry: "",
     year: "2025",
     client: "Bittersweet Co.",
+    photographer: "Alexxus Cohill",
+    mua: "Evelyn Gutierrez",
+    stylist: "Eziamaka Okpalaobieri",
+    otherModel: "Sydney Kemper",
+    creativeDirector: "Esther Reheema",
+    studio: "",
     content:
       "Liquid Fusion is a high-end cocktail photography project fusing luxury mixology with futuristic aesthetics. It reimagines cocktails as art, blending sci-fi influences, neon lighting, and molecular techniques. Sleek minimalism, high-contrast lighting, and holographic effects create an air of mystery and innovation.",
     mainImage:
@@ -63,7 +75,12 @@ export const works = [
     category: "Commercial",
     industry: "",
     year: "2025",
-    client: "Velar Motors",
+    photographer: "Abdul-Baki Okoya",
+    mua: "Evelyn Gutierrez",
+    stylist: "",
+    otherModel: "Esther Reheema",
+    creativeDirector: "Esther Reheema",
+    studio: "",
     content:
       "The visuals will emphasize bold lighting, reflective surfaces, and a futuristic aesthetic, blending minimalism and high-tech luxury. The imagery will highlight the car's sharp lines, illuminated accents, and performance-driven elegance, creating a hyper-modern, almost sci-fi feel.",
     mainImage:
@@ -90,6 +107,12 @@ export const works = [
     industry: "Beauty",
     year: "2025",
     client: "Experimental Concept",
+    photographer: "Miles Curry",
+    mua: "",
+    stylist: "",
+    otherModel: "",
+    creativeDirector: "",
+    studio: "Studio MGC",
     content:
       "ECLIPSE STUDIOS redefines visual identity for a high-end multi-brand space, balancing avant-garde elegance with raw industrial design. The branding incorporates metallic textures, asymmetric compositions, and an abstract motion identity. The campaign captures movement in fashion with dynamic long-exposure photography and cinematic color grading.",
     mainImage:
@@ -114,7 +137,12 @@ export const works = [
     category: "Editorial",
     industry: "Lifestyle",
     year: "2023",
-    client: "Urban Collective",
+    photographer: "Abdul-Baqi Okoya",
+    mua: "",
+    stylist: "",
+    otherModel: "Ibukun Odeleye",
+    creativeDirector: "",
+    studio: "",
     content:
       "A mix of high-energy urban exploration and quiet, intimate moments. The collection is built around movement, natural light, and a balance of polished yet candid imagery.",
     mainImage:
@@ -141,6 +169,12 @@ export const works = [
     industry: "Music Video",
     year: "2024",
     client: "808 Records",
+    photographer: "Jordan Smith",
+    mua: "",
+    stylist: "",
+    otherModel: "",
+    creativeDirector: "",
+    studio: "",
     content:
       "A dark, high-contrast visual style with a mix of handheld and slow-motion shots. The vibe is raw, unapologetic, and immersive—bringing viewers into the world with moody cityscapes, late-night streetlights, and fast-paced movement.",
     mainImage:
@@ -166,6 +200,12 @@ export const works = [
     industry: "",
     year: "",
     client: "",
+    photographer: "Karla Montiel",
+    mua: "",
+    stylist: "",
+    otherModel: "",
+    creativeDirector: "",
+    studio: "Studio Lex Chicago",
     content: "",
     mainImage:
       "https://framerusercontent.com/images/VFj7Udf7OvAwkUwYQirB8dd2Dgw.jpg",
@@ -191,6 +231,12 @@ export const works = [
     industry: "",
     year: "",
     client: "",
+    photographer: "Bailey Bauer",
+    mua: "",
+    stylist: "",
+    otherModel: "",
+    creativeDirector: "",
+    studio: "",
     content: "",
     mainImage:
       "https://framerusercontent.com/images/AixDIUxI2YLshTnOw0Ew0OKiQHc.jpg",
@@ -216,6 +262,12 @@ export const works = [
     industry: "Exhibition",
     year: "2024",
     client: "Revival Collective",
+    photographer: "Oluwasemilore Sola-Adebiyi",
+    mua: "",
+    stylist: "",
+    otherModel: "",
+    creativeDirector: "",
+    studio: "",
     content:
       "A modern reinterpretation of late-'90s youth culture, blending DIY punk aesthetics with early internet nostalgia. The branding features grainy textures, ripped paper collages, and a custom typeface inspired by old-school rave flyers. The campaign is shot entirely on 35mm film, embracing imperfections and raw energy.",
     mainImage:
