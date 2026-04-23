@@ -303,11 +303,12 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												fit: "fill",
 												pixelHeight: 600,
 												pixelWidth: 900,
+												positionY: '30%',
 												sizes: "300px",
 												...toResponsiveImage(fcMlafgQF2),
 											}}
 											className={"framer-ci7pae"}
-											data-framer-name={"Image 1"}
+											data-framer-name={"Image 1"}		
 											layoutDependency={layoutDependency}
 											layoutId={"DDiI7IGCG"}
 											style={{
@@ -344,6 +345,7 @@ var Component = /* @__PURE__ */ React.forwardRef(function (props, ref) {
 												pixelHeight: 600,
 												pixelWidth: 900,
 												sizes: "300px",
+												positionY: "bottom",
 												...toResponsiveImage(oRQx3smJo2),
 											}}
 											className={"framer-9s0ovi"}

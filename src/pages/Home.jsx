@@ -128,7 +128,7 @@ export default function Home() {
                 Model Portfolio
               </span>
               <span className="text-h5" style={heroSubtitleStyle}>
-                Born from a love of beauty — built for the brand
+                Born from a love of beauty
               </span>
             </div>
           </motion.div>
@@ -255,11 +255,11 @@ export default function Home() {
             {slideshowItems.length >= 6 && (
           <div style={{ width: '100%', overflow: 'hidden', paddingBottom: 0 }}>
             <ImageSlideshow
-              image1={{ src: slideshowItems[0].mainImage, alt: slideshowItems[0].title }}
+              image1={{ src: slideshowItems[0].images[7], alt: slideshowItems[0].title }}
               image2={{ src: slideshowItems[1].mainImage, alt: slideshowItems[1].title }}
-              image3={{ src: slideshowItems[2].mainImage, alt: slideshowItems[2].title }}
-              image4={{ src: slideshowItems[3].mainImage, alt: slideshowItems[3].title }}
-              image5={{ src: slideshowItems[4].mainImage, alt: slideshowItems[4].title }}
+              image3={{ src: slideshowItems[2].images[4], alt: slideshowItems[2].title }}
+              image4={{ src: slideshowItems[3].images[0], alt: slideshowItems[3].title }}
+              image5={{ src: slideshowItems[4].images[0], alt: slideshowItems[4].title }}
               image6={{ src: slideshowItems[5].mainImage, alt: slideshowItems[5].title }}
               style={{ width: '100%', height: 220 }}
             />

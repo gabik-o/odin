@@ -26,7 +26,8 @@ export const works = [
       "https://framerusercontent.com/images/HG1e6Lj2aHUNDgPxZjBhwgtSTs.jpg",
       "https://framerusercontent.com/images/yvVebK5WD0LIlDqbEfmShSKcI0.jpg",
       "https://framerusercontent.com/images/kTqU6LVBWOu0OFmG5jcx33snBM.jpg",
-      "https://framerusercontent.com/images/sxvlTEnqIf0KwoWujlDTE5nTLk.jpg",
+      "https://framerusercontent.com/images/MNeFcdCfIWCbXlQ5FfMW3KIShcg.jpg",
+      "https://framerusercontent.com/images/sxvlTEnqIf0KwoWujlDTE5nTLk.jpg"
     ],
   },
   {
@@ -52,6 +53,7 @@ export const works = [
       "https://framerusercontent.com/images/cCN4n7i0kzzMij62bVivx6PozI.jpg",
       "https://framerusercontent.com/images/V9yMb6O6fPa9iheeAd0jUQNB4p4.jpg",
       "https://framerusercontent.com/images/potr2jdEhEcMdikFWKO3fI8WMA.jpg",
+       "https://framerusercontent.com/images/YYcBn7Q3SMeA1TC0gWjq88dhzk.jpg"
     ],
   },
   {
@@ -73,6 +75,7 @@ export const works = [
       "https://framerusercontent.com/images/Pjt1m9so40EbcuaX6WTkSMcqDIA.jpg",
       "https://framerusercontent.com/images/Ggda5uiPFfO7MA0vVuNqK75BoMg.jpg",
       "https://framerusercontent.com/images/hYUqdkCXCmYkvjkkEngw6xQ3bU.jpg",
+       "https://framerusercontent.com/images/gzM1GULpO0gkHZO4vdIZKVxVE5o.webp",
       "https://framerusercontent.com/images/0XG3KPcBSxdxR6EVf1CwjuzQw.jpg",
       "https://framerusercontent.com/images/yt9vT7aLp8kXtKSvAOIXGPUKeV8.jpg",
       "https://framerusercontent.com/images/PWLNe1f7PiUR5MCfTAeY5cyJUE.jpg",
@@ -101,6 +104,7 @@ export const works = [
       "https://framerusercontent.com/images/MLeknytxoSABftSTNeS0i2GZQ90.jpg",
       "https://framerusercontent.com/images/58BdyHpROtJVuqoClZDhldY6pE.jpg",
       "https://framerusercontent.com/images/kv1ZKrPAUWhZNxaUkPBXtWdvygQ.jpg",
+       "https://framerusercontent.com/images/l1ybeLzhL8rpWg0yqknJkZLunY.jpg",
     ],
   },
   {
@@ -125,6 +129,7 @@ export const works = [
       "https://framerusercontent.com/images/sF0H43hQSHCkwXkhbY5YECmFTU.webp",
       "https://framerusercontent.com/images/xrAz203y11FwE5unemoTEr5YFlk.webp",
       "https://framerusercontent.com/images/sJCLsRFomClGAEK9EWzEhqLA.webp",
+       "https://framerusercontent.com/images/9zbuoa7leSZWCxiGJzhj8WC5Yc.jpg",
       "https://framerusercontent.com/images/aePFMBY8yXMCGTZuR8XX28p6U.webp",
     ],
   },
@@ -147,6 +152,7 @@ export const works = [
       "https://framerusercontent.com/images/GOLcSGo7kOx4GFNMtpBAWCvvr4.jpg",
       "https://framerusercontent.com/images/HoKXSED9LEPTq5L4jHWQZsBLJ2g.jpg",
       "https://framerusercontent.com/images/gfjvEukjBFmB0X9myuFoDn7Nxk.jpg",
+       "https://framerusercontent.com/images/Jh5euvTesNK8WxIQOqefkhlu9g.jpg",
       "https://framerusercontent.com/images/bYoPJTG0ePOdjj9tnE5Zj0cdeIY.jpg",
       "https://framerusercontent.com/images/ky6Kz9bG1FJvvDl33e387bFutPs.jpg",
       "https://framerusercontent.com/images/eRD7qUJy374AtXaX32RzxiDUCN4.jpg",
@@ -171,6 +177,7 @@ export const works = [
       "https://framerusercontent.com/images/4lACqK1hGochQTx13W4yxNlyjA.webp",
       "https://framerusercontent.com/images/fX2zLP5mIKWLGZIsdF6gbk9gBg.webp",
       "https://framerusercontent.com/images/wuxE9ItXRzzv2kNguZydQurWdZo.webp",
+       "https://framerusercontent.com/images/QZVoghXLB7iXzBjpcM6u5u8XUs.webp",
       "https://framerusercontent.com/images/hBTlagp703rfG9XOngSSTr1EWE.webp",
       "https://framerusercontent.com/images/e8VS3yreNM1VrkGqzofdKqxh1Q.webp",
       "https://framerusercontent.com/images/tTqW1SP94NbEGAtvVvjU4k5bDQM.webp",
@@ -190,6 +197,7 @@ export const works = [
     hoverImage:
       "https://framerusercontent.com/images/OHSWbln5TEXTS4fHhIT4iZ5oFQ.jpg",
     images: [
+       "https://framerusercontent.com/images/OHSWbln5TEXTS4fHhIT4iZ5oFQ.jpg",
       "https://framerusercontent.com/images/oru1KZ6drHmRjoIGqjxy5U2V59w.jpg",
       "https://framerusercontent.com/images/7OjGbWL7nAiZGZpiVXwYvJP44.jpg",
       "https://framerusercontent.com/images/vg79kY1Wn2Y6MPqVfvF2GJjDY.jpg",
@@ -216,6 +224,7 @@ export const works = [
       "https://framerusercontent.com/images/3NlCQYxqq03GTwZibUOvYgEcL1M.webp",
     images: [
       "https://framerusercontent.com/images/ifqSkjce95eqRb96tO6ig9EDI.webp",
+       "https://framerusercontent.com/images/3NlCQYxqq03GTwZibUOvYgEcL1M.webp",
       "https://framerusercontent.com/images/d2zw9Gr1cUcqTuoL5I4xTGrao4E.webp",
     ],
   },

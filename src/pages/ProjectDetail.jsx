@@ -115,7 +115,7 @@ export default function ProjectDetail() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               style={{
-                aspectRatio: i === 0 ? '1 / 1' : '4 / 5',
+                aspectRatio: '4 / 5',
                 overflow: 'hidden',
                 backgroundColor: 'var(--zinc-900)',
               }}
