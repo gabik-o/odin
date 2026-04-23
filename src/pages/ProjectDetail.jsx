@@ -15,7 +15,7 @@ export default function ProjectDetail() {
   const next = works[(currentIndex + 1) % works.length]
 
   return (
-    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 50 }}>
+    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 100 }}>
 
       {/* Hero image */}
       <motion.div
