@@ -22,7 +22,7 @@ export default function ProjectDetail() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        style={{ width: '100%', height: '80vh', overflow: 'hidden' }}
+        className="detail-hero"
       >
         <motion.img
           src={work.mainImage}
@@ -30,7 +30,7 @@ export default function ProjectDetail() {
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
         />
       </motion.div>
 
@@ -152,8 +152,24 @@ export default function ProjectDetail() {
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        .detail-hero {
+          width: 100%;
+          height: 80vh;
+          overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+          .detail-hero {
+            height: auto;
+            aspect-ratio: 4 / 5;
+          }
           .detail-pad { padding-left: 24px !important; padding-right: 24px !important; }
+          /* Constrain HeadingTitle so long project names don't overflow */
+          .detail-pad h1,
+          .detail-pad .framer-styles-preset-19wksx {
+            font-size: clamp(22px, 6vw, 40px) !important;
+            word-break: break-word;
+          }
         }
       `}</style>
     </main>
