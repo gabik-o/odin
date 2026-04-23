@@ -1,6 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import Button       from '../framer/button'
 import HeadingTitle from '../framer/heading-title'
 import { getWorkBySlug, works } from '../data/works'
 
@@ -12,6 +11,7 @@ export default function ProjectDetail() {
 
   const currentIndex = works.findIndex((w) => w.slug === slug)
   const next = works[(currentIndex + 1) % works.length]
+  const prev = works[(currentIndex - 1 + works.length) % works.length]
 
   return (
     <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 100 }}>
@@ -102,10 +102,10 @@ export default function ProjectDetail() {
           style={{
             padding: '0 100px 100px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
             gap: 20,
           }}
-          className="detail-pad"
+          className="detail-pad detail-gallery"
         >
           {work.images.map((src, i) => (
             <motion.div
@@ -131,12 +131,23 @@ export default function ProjectDetail() {
         </div>
       )}
 
-      {/* Next project */}
-      <div style={{ borderTop: '1px solid var(--zinc-800)', padding: '80px 100px' }} className="detail-pad">
-        <p className="text-h6-sm" style={{ color: 'var(--zinc-600)', marginBottom: 40 }}>
-          Next Project
-        </p>
-        <Link to={`/projects/${next.slug}`} className="next-card-link">
+      {/* Prev / Next navigation */}
+      <div className="detail-nav detail-pad">
+        <Link to={`/projects/${prev.slug}`} className="detail-nav__card detail-nav__card--prev">
+          <p className="detail-nav__label">← Previous</p>
+          <div className="next-card">
+            <div className="next-card__media">
+              <img className="next-card__img next-card__img--base" src={prev.mainImage} alt={prev.title} loading="lazy" draggable={false} />
+              {prev.hoverImage && (
+                <img className="next-card__img next-card__img--hover" src={prev.hoverImage} alt="" loading="lazy" draggable={false} />
+              )}
+            </div>
+            <p className="next-card__title">{prev.title}</p>
+          </div>
+        </Link>
+
+        <Link to={`/projects/${next.slug}`} className="detail-nav__card detail-nav__card--next">
+          <p className="detail-nav__label">Next →</p>
           <div className="next-card">
             <div className="next-card__media">
               <img className="next-card__img next-card__img--base" src={next.mainImage} alt={next.title} loading="lazy" draggable={false} />
@@ -147,11 +158,6 @@ export default function ProjectDetail() {
             <p className="next-card__title">{next.title}</p>
           </div>
         </Link>
-      </div>
-
-      {/* Back */}
-      <div style={{ padding: '0 100px 80px' }} className="detail-pad">
-        <Button title="All Works" link="/projects" variant="Primary" icon="ArrowLeft" />
       </div>
 
       <style>{`
@@ -166,6 +172,52 @@ export default function ProjectDetail() {
           width: 100% !important;
           max-width: 100% !important;
           min-width: 0 !important;
+        }
+
+        .detail-nav {
+          border-top: 1px solid var(--zinc-800);
+          padding-top: 80px;
+          padding-bottom: 80px;
+          display: flex;
+          justify-content: space-between;
+          gap: 40px;
+        }
+
+        .detail-nav__card {
+          display: block;
+          text-decoration: none;
+          width: 220px;
+          flex-shrink: 0;
+        }
+
+        .detail-nav__card .next-card__media {
+          margin: 0 4px;
+        }
+
+        .detail-nav__card--next {
+          text-align: right;
+          padding-inline-end: 40px;
+        }
+
+        .detail-nav__label {
+          font-family: var(--font-mono, monospace);
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--zinc-600);
+          margin: 0 0 16px;
+        }
+
+        @media (max-width: 768px) {
+          .detail-nav {
+            flex-direction: column;
+            gap: 48px;
+          }
+          .detail-nav__card,
+          .detail-nav__card--next {
+            width: 100%;
+            text-align: left;
+          }
         }
 
         .next-card-link {
@@ -229,19 +281,21 @@ export default function ProjectDetail() {
           }
         }
 
-.detail-hero {
-          width: 100%;
-          height: 80vh;
+        .detail-hero {
+          width: 50%;
+          margin: 0 auto;
+          aspect-ratio: 4 / 5;
           overflow: hidden;
         }
 
         @media (max-width: 768px) {
           .detail-hero {
-            height: auto;
-            aspect-ratio: 4 / 5;
+            width: 100%;
+          }
+          .detail-gallery {
+            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
           }
           .detail-pad { padding-left: 24px !important; padding-right: 24px !important; }
-          /* Constrain HeadingTitle so long project names don't overflow */
           .detail-pad h1,
           .detail-pad .framer-styles-preset-19wksx {
             font-size: clamp(22px, 6vw, 40px) !important;
