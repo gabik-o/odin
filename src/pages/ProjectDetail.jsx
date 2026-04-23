@@ -37,10 +37,10 @@ export default function ProjectDetail() {
       {/* Project info */}
       <div
         style={{
-          padding: '80px 100px',
+          padding: '50px 100px',
           display: 'flex',
           flexWrap: 'wrap',
-          gap: 80,
+          gap: 40,
           justifyContent: 'space-between',
           alignItems: 'flex-start',
           borderBottom: '1px solid var(--zinc-800)',
@@ -48,6 +48,7 @@ export default function ProjectDetail() {
         className="detail-pad"
       >
         <motion.div
+          className="detail-title-wrap"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -152,7 +153,31 @@ export default function ProjectDetail() {
       </div>
 
       <style>{`
-        .detail-hero {
+        .detail-title-wrap {
+          width: 100%;
+          min-width: 0;
+        }
+
+        /* Allow HeadingTitle internals to shrink and wrap */
+        .detail-title-wrap > div,
+        .detail-title-wrap .framer-QR360 {
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+          .detail-title-wrap h2,
+          .detail-title-wrap .framer-styles-preset-f8fm9t {
+            font-size: clamp(24px, 7vw, 44px) !important;
+            white-space: normal !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+            line-height: 1.1 !important;
+          }
+        }
+
+.detail-hero {
           width: 100%;
           height: 80vh;
           overflow: hidden;
