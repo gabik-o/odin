@@ -179,7 +179,7 @@ export default function ProjectDetail() {
           padding-top: 80px;
           padding-bottom: 80px;
           display: flex;
-          justify-content: space-between;
+          justify-content: space-around;
           gap: 40px;
         }
 
@@ -196,7 +196,6 @@ export default function ProjectDetail() {
 
         .detail-nav__card--next {
           text-align: right;
-          padding-inline-end: 40px;
         }
 
         .detail-nav__label {
@@ -282,9 +281,9 @@ export default function ProjectDetail() {
         }
 
         .detail-hero {
-          width: 50%;
+          width: 40%;
           margin: 0 auto;
-          aspect-ratio: 4 / 5;
+          aspect-ratio: 3 / 4;
           overflow: hidden;
         }
 
