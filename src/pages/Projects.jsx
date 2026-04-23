@@ -5,36 +5,22 @@ import { works } from '../data/works'
 
 const CATEGORIES = ['All', 'Commercial', 'Editorial']
 
-// Stable shuffle seeded by category so order is consistent per tab but varied
-function seededShuffle(arr, seed) {
-  const a = [...arr]
-  let s = seed
-  for (let i = a.length - 1; i > 0; i--) {
-    s = (s * 1664525 + 1013904223) & 0xffffffff
-    const j = Math.abs(s) % (i + 1)
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-const SEEDS = { All: 42, Commercial: 7, Editorial: 13 }
 
 export default function Projects() {
   const [active, setActive] = useState('All')
 
   const filtered = useMemo(() => {
     const list = active === 'All' ? works : works.filter((w) => w.category === active)
-    return seededShuffle(list, SEEDS[active] ?? 1)
+    return list
   }, [active])
 
   return (
-    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 100 }}>
+    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 60 }}>
 
       {/* ── Hero header ── */}
       <div className="portfolio-header">
         <div className="portfolio-header__inner">
           <p className="portfolio-kicker">Model Portfolio</p>
-          <h1 className="portfolio-title">Selected Works</h1>
           <p className="portfolio-subtitle">
             Commercial, editorial, and print — a curated look at work across campaigns, beauty, and brand.
           </p>

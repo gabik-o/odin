@@ -22,7 +22,7 @@ export default function Contact() {
   }
 
   return (
-    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 120 }}>
+    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 60 }}>
 
       {/* Body */}
       <div className="contact-pad contact-body">

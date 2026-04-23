@@ -11,7 +11,7 @@ const measurements = [
 
 export default function About() {
   return (
-    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 100 }}>
+    <main style={{ backgroundColor: 'var(--color-black)', minHeight: '100vh', paddingTop: 50 }}>
 
       {/* ── Hero ── */}
       <div className="about-pad about-hero">
