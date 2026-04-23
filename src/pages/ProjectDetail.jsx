@@ -1,6 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import ProjectCard  from '../framer/project-card'
 import Button       from '../framer/button'
 import HeadingTitle from '../framer/heading-title'
 import { getWorkBySlug, works } from '../data/works'
@@ -137,13 +136,16 @@ export default function ProjectDetail() {
         <p className="text-h6-sm" style={{ color: 'var(--zinc-600)', marginBottom: 40 }}>
           Next Project
         </p>
-        <Link to={`/projects/${next.slug}`} style={{ display: 'block', textDecoration: 'none', maxWidth: 380 }}>
-          <ProjectCard
-            title={next.title}
-            image={{ src: next.mainImage, alt: next.title }}
-            hoverImage={{ src: next.hoverImage, alt: next.title }}
-            style={{ width: '100%' }}
-          />
+        <Link to={`/projects/${next.slug}`} className="next-card-link">
+          <div className="next-card">
+            <div className="next-card__media">
+              <img className="next-card__img next-card__img--base" src={next.mainImage} alt={next.title} loading="lazy" draggable={false} />
+              {next.hoverImage && (
+                <img className="next-card__img next-card__img--hover" src={next.hoverImage} alt="" loading="lazy" draggable={false} />
+              )}
+            </div>
+            <p className="next-card__title">{next.title}</p>
+          </div>
         </Link>
       </div>
 
@@ -164,6 +166,56 @@ export default function ProjectDetail() {
           width: 100% !important;
           max-width: 100% !important;
           min-width: 0 !important;
+        }
+
+        .next-card-link {
+          display: block;
+          text-decoration: none;
+          width: 240px;
+        }
+
+        .next-card { width: 100%; }
+
+        .next-card__media {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 3 / 4;
+          overflow: hidden;
+          background-color: var(--zinc-900);
+          border-radius: 4px;
+        }
+
+        .next-card__img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .next-card__img--hover {
+          opacity: 0;
+          transition: opacity 0.35s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .next-card-link:hover .next-card__img--base { transform: scale(1.04); }
+        .next-card-link:hover .next-card__img--hover { opacity: 1; transform: scale(1.04); }
+
+        .next-card__title {
+          font-family: "JetBrains Mono", monospace;
+          font-size: 16px;
+          font-weight: 500;
+          color: rgb(228, 228, 231);
+          margin: 14px 0 0;
+          letter-spacing: -0.02em;
+          line-height: 1.2em;
+          text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+          .next-card-link { width: 100%; }
         }
 
         @media (max-width: 768px) {
